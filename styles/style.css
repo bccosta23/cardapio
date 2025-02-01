@@ -11,3 +11,7 @@
 body{
   background-color: #fcf7f8;
 }
+ 
+.remove-from-cart-btn {
+  margin-left: 10px;
+}

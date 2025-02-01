@@ -72,20 +72,26 @@ function updateCartModal(){
        const cartItemElement  = document.createElement("div");
 
        cartItemElement.innerHTML = `
-            <div class="flex items-center justify-between">
-                <div>
-                 <p class="font-bold">${item.name}</p>
-                 <p>Qtd: ${item.quantity}</p>
-                 <p class="font-medium mt-2">R$: ${item.price.toFixed(2)}</p>
+            <div 
+            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y divide-yellow-500 mt-1 mb-2 transform hover:scale-105 duration-200"
+            >
+                <div class="flex flex-col">
+                  <p class="font-bold">${item.name}</p>
+                    <div class="flex items-center gap-2">
+                        <p>Qtd: ${item.quantity}</p>
+                        <div class="flex gap-2">
+                           <button class="increase-quantity-btn" data-name="${item.name}">+</button>
+                           <button class="decrease-quantity-btn" data-name="${item.name}">-</button>
+                        </div>
+                    </div>
+                  <p class="font-medium mt-2">R$: ${item.price.toFixed(2)}</p>
                 </div>
 
-                
-                <button class="remove-from-cart-btn" data-name="${item.name}">                     
-                   Remover 
-                </button>
-              
+               <button class="remove-from-cart-btn" data-name="${item.name}">Remover</button>
             </div>
-        `
+        `;
+
+
 
         total += item.price * item.quantity;
 
@@ -102,6 +108,46 @@ function updateCartModal(){
 
 }
 
+cartItemsContainer.addEventListener("click", function(event){
+    if(event.target.classList.contains("remove-from-cart-btn")){
+        const name = event.target.getAttribute("data-name");
+        removeItemCart(name);
+    }
+
+    if(event.target.classList.contains("increase-quantity-btn")){
+        const name = event.target.getAttribute("data-name");
+        increaseItemQuantity(name);
+    }
+
+    if(event.target.classList.contains("decrease-quantity-btn")){
+        const name = event.target.getAttribute("data-name");
+        decreaseItemQuantity(name);
+    }
+});
+
+// Função para aumentar a quantidade
+function increaseItemQuantity(name){
+    const item = cart.find(item => item.name === name);
+    if(item){
+        item.quantity += 1;
+        updateCartModal();
+    }
+}
+
+// Função para diminuir a quantidade
+function decreaseItemQuantity(name){
+    const item = cart.find(item => item.name === name);
+    if(item){
+        if(item.quantity > 1){
+            item.quantity -= 1;
+        } else {
+            removeItemCart(name);
+        }
+        updateCartModal();
+    }
+}
+
+
 //Fução remover o item do carrinho//
 cartItemsContainer.addEventListener("click", function (event){
     if(event.target.classList.contains("remove-from-cart-btn")){
@@ -111,22 +157,17 @@ cartItemsContainer.addEventListener("click", function (event){
     }
 })
 
-function removeItemCart(name){
+function removeItemCart(name) {
+    // Encontrar o índice do item no carrinho
     const index = cart.findIndex(item => item.name === name);
 
-    if(index !== -1){
-      const item = cart[index]
-
-      if(item.quantity > 1){
-        item.quantity -= 1;
-        updateCartModal();
-        return;
-      }
-
-      cart.splice(index, 1);
-      updateCartModal();
+    if (index !== -1) {
+        // Remover o item do carrinho
+        cart.splice(index, 1);
+        updateCartModal();  // Atualiza a modal após a remoção
     }
 }
+
 
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
