@@ -73,7 +73,7 @@ function updateCartModal(){
 
        cartItemElement.innerHTML = `
             <div 
-            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y divide-yellow-500 mt-1 mb-2 transform hover:scale-90 duration-200 mt-2 mr-1"
+            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y  mb-2 mt-2 mr-1"
             >
                 <div class="flex flex-col">
                   <p class="font-bold">${item.name}</p>
