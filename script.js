@@ -73,21 +73,25 @@ function updateCartModal(){
 
        cartItemElement.innerHTML = `
             <div 
-            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y divide-yellow-500 mt-1 mb-2 transform hover:scale-105 duration-200"
+            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y divide-yellow-500 mt-1 mb-2 transform hover:scale-105 duration-200 mt-2 mr-1"
             >
                 <div class="flex flex-col">
                   <p class="font-bold">${item.name}</p>
                     <div class="flex items-center gap-2">
-                        <p>Qtd: ${item.quantity}</p>
+                        <p> Qtd: ${item.quantity}</p>
                         <div class="flex gap-2">
                            <button class="increase-quantity-btn" data-name="${item.name}">+</button>
                            <button class="decrease-quantity-btn" data-name="${item.name}">-</button>
                         </div>
                     </div>
-                  <p class="font-medium mt-2">R$: ${item.price.toFixed(2)}</p>
+                  <p class="font-medium mt-2">SubTotal&nbsp;R$: ${item.price.toFixed(2)}</p>
                 </div>
 
-               <button class="remove-from-cart-btn" data-name="${item.name}">Remover</button>
+                <button class="remove-from-cart-btn" data-name="${item.name}">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                    </svg>
+                </button>
             </div>
         `;
 
@@ -109,9 +113,10 @@ function updateCartModal(){
 }
 
 cartItemsContainer.addEventListener("click", function(event){
-    if(event.target.classList.contains("remove-from-cart-btn")){
-        const name = event.target.getAttribute("data-name");
-        removeItemCart(name);
+     
+    if(event.target.closest(".remove-from-cart-btn")){
+        const name = event.target.closest(".remove-from-cart-btn").getAttribute("data-name");
+        removeItemCart(name); // Remove o item do carrinho
     }
 
     if(event.target.classList.contains("increase-quantity-btn")){

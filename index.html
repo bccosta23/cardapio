@@ -213,39 +213,42 @@
 <!-- MODAL CART -->
 
 <div 
- class="bg-black bg-opacity-50 w-full h-full fixed top-0 left-0 z-50 items-center justify-center hidden"
+ class="bg-black bg-opacity-50 w-full h-full fixed top-0 left-0 z-50 flex items-center justify-center hidden"
  id="cart-modal"
 >
+    <div class="bg-white p-5 rounded-md w-full max-w-lg flex flex-col h-full">  
+  
+        <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
 
-    <div class="bg-white p-5 rounded-md min-w-full md:min-w-600">
-        <h2 class="text-center font-bold text-2xl mb-2">Meu Carinho</h2>
-        <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+        <!-- Area de Produtos com Scroll -->
+        <div id="cart-items" class="flex flex-col mb-2 overflow-y-auto flex-grow max-h-96">
+            <!-- Aqui virão os itens do carrinho -->
+        </div>
 
-        <p class= "font-bold">SubTotal:&nbsp;<span id="cart-total" > 00,00</span></p>
+        <p class="font-bold">Total:&nbsp;<span id="cart-total">00,00</span></p>
 
         <p class="font-bold mt-4">Endereço de entrega</p>
         <input
-           tipe="text"
+           type="text"
            placeholder="Digite seu endereço completo..."
            id="address"
            class="w-full border-2 p-1 rounded my-1"
         />
-        <p class="text-red-500 hidden"id="address-warn">Digite seu endereço completo</p>
+        <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
 
-        <div class="flex items-center justify-between mt-5 w-full">
-            <button id="close-modal-btn">Fechar</button>
-            <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded ">Finalizar pedido</button>
-        </div>
-
-
-      </div>
-
-</div>
-
-<!-- FIM MODAL CART -->
+        <!-- Botões Empilhados -->
+          <div class="flex flex-col items-center gap-4 mt-5 w-full pt-3 bg-transparent">
+            <button id="close-modal-btn" class="bg-gray-500 text-white px-6 py-2 rounded-full hover:bg-gray-600 transition-colors duration-300 w-full">Fechar</button>
+            <button id="checkout-btn" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 w-full">Finalizar pedido</button>
+          </div>
+    </div>
+  </div>
 
 
-<!-- BUTTON CARINHO -->
+ <!-- FIM MODAL CART -->
+
+
+ <!-- BUTTON CARINHO -->
 <footer class="w-full bg-pink-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
     <button
       class="flex items-center gap-2 text-white font-bold"
@@ -256,13 +259,13 @@
         <i class="fa fa-cart-plus text-lg text-white"></i>
 
     </button>
-</footer>
-<!-- FIM BUTTON CARINHO -->
+ </footer>
+ <!-- FIM BUTTON CARINHO -->
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
-<script src="script.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
+ <script src="script.js"></script>
  
 
 
