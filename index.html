@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,11 +29,11 @@
     <title>Lá Doceria - O Melhor Cone Está Aqui! </title>
 
    
-</head>
-<body>
+  </head>
+ <body>
     
-<!--HEADER -->
-<header class="w-full h-64 bg-gray-900 bg-home bg-cover bg-center">
+ <!--HEADER -->
+ <header class="w-full h-64 bg-gray-900 bg-home bg-cover bg-center">
     <div class="w-full h-full flex flex-col justify-center items-center">
         <img
         src="./assets/Logotipo.png"
@@ -50,15 +50,15 @@
         </div>
 
     </div>
-</header>
-<!-- FIM DO HEADER -->
+ </header>
+ <!-- FIM DO HEADER -->
 
 
-<h2 class=" text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+ <h2 class=" text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
     Conheça Nosso Cardapio
-</h2>
-<!-- INICIO DO MENU -->
-<div id="menu">
+ </h2>
+ <!-- INICIO DO MENU -->
+ <div id="menu">
     <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" >
      <div 
      class="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y divide-yellow-500 transform hover:scale-90 duration-200"
@@ -207,15 +207,15 @@
 
     </main>
 
-</div>
-<!-- FIM DO MENU -->
+ </div>
+ <!-- FIM DO MENU -->
 
-<!-- MODAL CART -->
+ <!-- MODAL CART -->
 
-<div 
- class="bg-black bg-opacity-50 w-full h-full fixed top-0 left-0 z-50 flex items-center justify-center hidden"
- id="cart-modal"
->
+ <div 
+  class="bg-black bg-opacity-50 w-full h-full fixed top-0 left-0 z-50 flex items-center justify-center hidden"
+  id="cart-modal"
+ >
     <div class="bg-white p-5 rounded-md w-full max-w-lg flex flex-col h-full">  
   
         <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
@@ -236,11 +236,22 @@
         />
         <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
 
-        <!-- Botões Empilhados -->
-          <div class="flex flex-col items-center gap-4 mt-5 w-full pt-3 bg-transparent">
-            <button id="close-modal-btn" class="bg-gray-500 text-white px-6 py-2 rounded-full hover:bg-gray-600 transition-colors duration-300 w-full">Fechar</button>
-            <button id="checkout-btn" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 w-full">Finalizar pedido</button>
-          </div>
+        <div class=" flex flex-col items-center gap-4 mt-5 w-full pt-3 bg-transparent">
+          <!-- Botão Fechar com ícone X no canto superior direito -->
+          <button id="close-modal-btn" onclick="fecharCarrinho()" class=" absolute  top-2 right-2 p-2 text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+            </svg>
+          </button>
+        
+          <!-- Botão Finalizar Pedido -->
+          <button id="checkout-btn" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 w-full">
+            Finalizar pedido
+          </button>
+        </div>
+        
+        
+        
     </div>
   </div>
 
@@ -249,7 +260,7 @@
 
 
  <!-- BUTTON CARINHO -->
-<footer class="w-full bg-pink-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
+ <footer class="w-full bg-pink-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
     <button
       class="flex items-center gap-2 text-white font-bold"
       id="cart-btn" 
@@ -269,5 +280,5 @@
  
 
 
-</body>
+ </body>
 </html>

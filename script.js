@@ -1,4 +1,3 @@
-
 const menu = document.getElementById("menu")
 const cartBtn = document.getElementById("cart-btn")
 const cartModal = document.getElementById("cart-modal")
@@ -41,29 +40,24 @@ menu.addEventListener("click", function(event){
     }
 })
 
-// Funçao para add no carrinho //
+// Função para adicionar no carrinho //
 function addToCart(name, price){
     const existingItem = cart.find(item => item.name === name)
 
     if(existingItem){
-
         existingItem.quantity += 1;
-    }else{
-
+    } else {
         cart.push({
          name,
          price,
          quantity: 1,
-
         })
-
     }
 
     updateCartModal()
-    
 }
 
-//atualizar carrinho//
+// Atualizar carrinho //
 function updateCartModal(){
     cartItemsContainer.innerHTML = "";
     let total = 0;
@@ -73,33 +67,54 @@ function updateCartModal(){
 
        cartItemElement.innerHTML = `
             <div 
-            class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y  mb-2 mt-2 mr-1"
+              class="flex items-center justify-between bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300 divide-y mb-2 mt-2 mr-1"
             >
                 <div class="flex flex-col">
                   <p class="font-bold">${item.name}</p>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1">
                         <p> Qtd: ${item.quantity}</p>
-                        <div class="flex gap-2">
-                           <button class="increase-quantity-btn" data-name="${item.name}">+</button>
-                           <button class="decrease-quantity-btn" data-name="${item.name}">-</button>
+                        <div class="flex flex-col gap-0.5">
+                           <!-- Botão para aumentar quantidade (seta para cima) -->
+                           <button class="increase-quantity-btn" data-name="${item.name}">
+                               <svg class="w-6 h-6 text-gray-800 dark:text-white" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    width="24" height="24" fill="none" 
+                                    viewBox="0 0 24 24">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="m16 14-4-4-4 4"/>
+                               </svg>
+                           </button>
+                           <!-- Botão para diminuir quantidade (seta para baixo) -->
+                           <button class="decrease-quantity-btn" data-name="${item.name}">
+                               <svg class="w-6 h-6 text-gray-800 dark:text-white" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    width="24" height="24" fill="none" 
+                                    viewBox="0 0 24 24">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="m8 10 4 4 4-4"/>
+                               </svg>
+                           </button>
                         </div>
                     </div>
-                  <p class="font-medium mt-2">SubTotal&nbsp;R$: ${item.price.toFixed(2)}</p>
+                  <p class="font-medium mt-2 ">SubTotal&nbsp;R$: ${item.price.toFixed(2)}</p>
                 </div>
 
                 <button class="remove-from-cart-btn" data-name="${item.name}">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" 
+                         aria-hidden="true" 
+                         xmlns="http://www.w3.org/2000/svg" 
+                         width="24" height="24" fill="none" 
+                         viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                           d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
                     </svg>
                 </button>
             </div>
         `;
 
-
-
         total += item.price * item.quantity;
-
-
         cartItemsContainer.appendChild(cartItemElement)
     })
 
@@ -109,7 +124,6 @@ function updateCartModal(){
     });
 
     cartCounter.innerHTML = cart.length;
-
 }
 
 cartItemsContainer.addEventListener("click", function(event){
@@ -119,13 +133,13 @@ cartItemsContainer.addEventListener("click", function(event){
         removeItemCart(name); // Remove o item do carrinho
     }
 
-    if(event.target.classList.contains("increase-quantity-btn")){
-        const name = event.target.getAttribute("data-name");
+    if(event.target.closest(".increase-quantity-btn")){
+        const name = event.target.closest(".increase-quantity-btn").getAttribute("data-name");
         increaseItemQuantity(name);
     }
 
-    if(event.target.classList.contains("decrease-quantity-btn")){
-        const name = event.target.getAttribute("data-name");
+    if(event.target.closest(".decrease-quantity-btn")){
+        const name = event.target.closest(".decrease-quantity-btn").getAttribute("data-name");
         decreaseItemQuantity(name);
     }
 });
@@ -152,12 +166,10 @@ function decreaseItemQuantity(name){
     }
 }
 
-
-//Fução remover o item do carrinho//
+// Função para remover o item do carrinho //
 cartItemsContainer.addEventListener("click", function (event){
     if(event.target.classList.contains("remove-from-cart-btn")){
         const name = event.target.getAttribute("data-name")
-
         removeItemCart(name);
     }
 })
@@ -165,7 +177,6 @@ cartItemsContainer.addEventListener("click", function (event){
 function removeItemCart(name) {
     // Encontrar o índice do item no carrinho
     const index = cart.findIndex(item => item.name === name);
-
     if (index !== -1) {
         // Remover o item do carrinho
         cart.splice(index, 1);
@@ -173,26 +184,19 @@ function removeItemCart(name) {
     }
 }
 
-
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
-
     if(inputValue !== ""){
         addressInput.classList.remove("border-red-500");
         addressWarn.classList.add("hidden")
     }
-
-
 })
 
-
-//Finalizar Pedido
+// Finalizar Pedido
 checkoutBtn.addEventListener("click", function(){
 
     const isOpen = checkRestaurantOpen();
     if(!isOpen){
-         
-
        Toastify({
         text:  "🍦 Poxa, deu vontade de um cone agora? Infelizmente, estamos fechados! Mas fica tranquilo, logo abrimos das 18:00 às 22:00. Segura a vontade aí! 😅",
         duration: 3000,
@@ -205,12 +209,8 @@ checkoutBtn.addEventListener("click", function(){
         },
         onClick: function(){} // Callback after click
       }).showToast();
-
-
-
         return;
     }
-
     
     if(cart.length === 0) return;
     if(addressInput.value === ""){
@@ -218,8 +218,6 @@ checkoutBtn.addEventListener("click", function(){
        addressInput.classList.add("border-red-500") 
        return;   
     }
-
-
  
    // Enviar Pedido WhatsApp
     const cartItems = cart.map((item) => {
@@ -234,22 +232,17 @@ checkoutBtn.addEventListener("click", function(){
 
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 
-
-  cart = [];
-  updateCartModal();
-
-
+    cart = [];
+    updateCartModal();
 })
 
-
-//Verificar hora e manipular card horario
+// Verificar hora e manipular card horário
 function checkRestaurantOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora <22;
-    //true = loja está aberta 
+    return hora >= 18 && hora < 22;
+    // true = loja está aberta 
 }
-
 
 const spanItem = document.getElementById("date-span")
 const isOpen = checkRestaurantOpen();
@@ -257,8 +250,7 @@ const isOpen = checkRestaurantOpen();
 if(isOpen){
     spanItem.classList.remove("bg-red-500")
     spanItem.classList.add("bg-green-500")
-}else{
+} else {
     spanItem.classList.remove("bg-green-500")
     spanItem.classList.add("bg-red-500")
 }
-
