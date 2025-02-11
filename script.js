@@ -197,18 +197,18 @@ checkoutBtn.addEventListener("click", function(){
 
     const isOpen = checkRestaurantOpen();
     if(!isOpen){
-       Toastify({
-        text:  "🍦 Poxa, deu vontade de um cone agora? Infelizmente, estamos fechados! Mas fica tranquilo, logo abrimos das 18:00 às 22:00. Segura a vontade aí! 😅",
-        duration: 3000,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "#ef4444",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
+        Toastify({
+             text:  "🍦 Poxa, deu vontade de um cone agora? Infelizmente, estamos fechados! Mas fica tranquilo, logo abrimos das 18:00 às 22:00. Segura a vontade aí! 😅",
+             duration: 3000,
+             close: true,
+             gravity: "top", // `top` or `bottom`
+             position: "right", // `left`, `center` or `right`
+             stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#ef4444",
+            },
+         onClick: function(){} // Callback after click
+        }).showToast();
         return;
     }
     
