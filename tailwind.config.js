@@ -12,7 +12,7 @@ module.exports = {
       },
 
       backgroundImage:{
-        "home":"url('/assets/bg.png')"
+        "home":"url('/_assets/bg.png')"
       }       
     },
   },

@@ -75,27 +75,27 @@ function updateCartModal(){
                         <p> Qtd: ${item.quantity}</p>
                         <div class="flex flex-col gap-0.5">
                            <!-- Botão para aumentar quantidade (seta para cima) -->
-                           <button class="increase-quantity-btn" data-name="${item.name}">
-                               <svg class="w-6 h-6 text-gray-800 dark:text-white" 
+                            <button class="increase-quantity-btn" data-name="${item.name}">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" 
                                     aria-hidden="true" 
                                     xmlns="http://www.w3.org/2000/svg" 
                                     width="24" height="24" fill="none" 
                                     viewBox="0 0 24 24">
                                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                        d="m16 14-4-4-4 4"/>
-                               </svg>
-                           </button>
+                                    d="m16 14-4-4-4 4"/>
+                                </svg>
+                            </button>
                            <!-- Botão para diminuir quantidade (seta para baixo) -->
-                           <button class="decrease-quantity-btn" data-name="${item.name}">
-                               <svg class="w-6 h-6 text-gray-800 dark:text-white" 
+                            <button class="decrease-quantity-btn" data-name="${item.name}">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" 
                                     aria-hidden="true" 
                                     xmlns="http://www.w3.org/2000/svg" 
                                     width="24" height="24" fill="none" 
                                     viewBox="0 0 24 24">
                                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                        d="m8 10 4 4 4-4"/>
-                               </svg>
-                           </button>
+                                    d="m8 10 4 4 4-4"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                   <p class="font-medium mt-2 ">SubTotal&nbsp;R$: ${item.price.toFixed(2)}</p>
@@ -103,12 +103,12 @@ function updateCartModal(){
 
                 <button class="remove-from-cart-btn" data-name="${item.name}">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" 
-                         aria-hidden="true" 
-                         xmlns="http://www.w3.org/2000/svg" 
-                         width="24" height="24" fill="none" 
-                         viewBox="0 0 24 24">
+                        aria-hidden="true" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" height="24" fill="none" 
+                        viewBox="0 0 24 24">
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                           d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                        d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
                     </svg>
                 </button>
             </div>
@@ -198,14 +198,14 @@ checkoutBtn.addEventListener("click", function(){
     const isOpen = checkRestaurantOpen();
     if(!isOpen){
         Toastify({
-             text:  "🍦 Poxa, deu vontade de um cone agora? Infelizmente, estamos fechados! Mas fica tranquilo, logo abrimos das 18:00 às 22:00. Segura a vontade aí! 😅",
-             duration: 3000,
-             close: true,
-             gravity: "top", // `top` or `bottom`
-             position: "right", // `left`, `center` or `right`
-             stopOnFocus: true, // Prevents dismissing of toast on hover
+            text:  "🍦 Poxa, deu vontade de um cone agora? Infelizmente, estamos fechados! Mas fica tranquilo, logo abrimos das 18:00 às 22:00. Segura a vontade aí! 😅",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-              background: "#ef4444",
+             background: "#ef4444",
             },
          onClick: function(){} // Callback after click
         }).showToast();
